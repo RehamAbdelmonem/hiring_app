@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hiring_app/screens/register/register_screen.dart';
 import 'package:hiring_app/utils/app_colors.dart';
 import 'package:hiring_app/utils/styles.dart';
 import 'package:hiring_app/widgets/custom_app_bar.dart';
 import 'package:hiring_app/widgets/custom_button.dart';
-import 'package:hiring_app/widgets/custom_checkbox.dart';
 import 'package:hiring_app/widgets/text_field_widget.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool value = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,9 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomAppBar(textAppBar: 'Account Login',),
+            const CustomAppBar(
+              textAppBar: 'Account Login',
+            ),
             Padding(
               padding: const EdgeInsets.only(
                 top: 45,
@@ -51,7 +60,26 @@ class LoginScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const CustomCheckbox(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: Row(
+                    children: [
+                      Checkbox(
+                        activeColor: AppColors.primaryColor,
+                        value: value,
+                        onChanged: (bool? newValue) {
+                          setState(() {
+                            value = newValue ?? false;
+                          });
+                        },
+                      ),
+                      const Text(
+                        'Remember me',
+                        style: Styles.textStyle12,
+                      ),
+                    ],
+                  ),
+                ),
                 GestureDetector(
                   child: Container(
                     alignment: Alignment.centerRight,
@@ -67,7 +95,10 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(
               height: 14,
             ),
-            const CustomButton(),
+            CustomButton(
+              onTap: () {},
+              buttonText: 'Login',
+            ),
             const SizedBox(
               height: 14,
             ),
@@ -79,6 +110,12 @@ class LoginScreen extends StatelessWidget {
                   style: Styles.textStyle12,
                 ),
                 GestureDetector(
+                  onTap: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const RegisterScreen();
+                    }));
+                  },
                   child: Text(
                     'Register',
                     style: Styles.textStyle12

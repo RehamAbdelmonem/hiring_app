@@ -16,6 +16,13 @@ abstract class Styles {
     fontFamily: 'Montserrat',
   );
 
+  static const textStyle14 = TextStyle(
+    color: Colors.black,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Montserrat',
+  );
+
   static const textStyle16 = TextStyle(
     color: AppColors.textColor,
     fontSize: 16,

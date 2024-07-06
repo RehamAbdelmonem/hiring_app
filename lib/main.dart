@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hiring_app/screens/login_screen.dart';
+import 'package:hiring_app/screens/login/login_screen.dart';
 
 void main() {
   runApp(const HiringApp());

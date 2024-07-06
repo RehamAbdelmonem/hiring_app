@@ -3,10 +3,17 @@ import 'package:hiring_app/utils/app_colors.dart';
 import 'package:hiring_app/utils/styles.dart';
 
 class TextFieldWidget extends StatelessWidget {
-  const TextFieldWidget({super.key, required this.fieldText, this.fieldIcon});
+  const TextFieldWidget(
+      {super.key,
+      required this.fieldText,
+      this.fieldIcon,
+     this.maxLines,
+     this.textfieldHeight = 60});
 
   final String fieldText;
   final IconData? fieldIcon;
+  final int? maxLines;
+  final double textfieldHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,7 @@ class TextFieldWidget extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20),
           child: Text(
             fieldText,
-            style:  Styles.textStyle16,
+            style: Styles.textStyle16,
           ),
         ),
         const SizedBox(
@@ -32,7 +39,7 @@ class TextFieldWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(16.0),
             ),
             width: 350,
-            height: 60,
+            height: textfieldHeight,
             child: TextField(
               keyboardType: TextInputType.emailAddress,
               style: const TextStyle(color: Colors.black),
@@ -50,7 +57,6 @@ class TextFieldWidget extends StatelessWidget {
             ),
           ),
         ),
-
       ],
     );
   }
