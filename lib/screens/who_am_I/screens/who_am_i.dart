@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hiring_app/screens/countries/screens/countries_screen.dart';
+import 'package:hiring_app/screens/services/screens/service_screen.dart';
 import 'package:hiring_app/screens/who_am_I/widgets/who_am_i_body.dart';
 import 'package:hiring_app/utils/app_colors.dart';
-import 'package:hiring_app/utils/styles.dart';
 
 class WhoAmI extends StatefulWidget {
   const WhoAmI({super.key});
@@ -17,7 +17,7 @@ class _WhoAmIState extends State<WhoAmI> {
   List<Widget> widgetList = const [
     WhoAmIBody(),
     CountriesScreen(),
-    Text('Home', style: Styles.textStyle18,),
+    ServiceScreen(),
   ];
 
   @override
