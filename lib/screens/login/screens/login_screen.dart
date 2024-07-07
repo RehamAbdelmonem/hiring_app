@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hiring_app/screens/register/register_screen.dart';
+import 'package:hiring_app/screens/register/screens/register_screen.dart';
 import 'package:hiring_app/utils/app_colors.dart';
 import 'package:hiring_app/utils/styles.dart';
 import 'package:hiring_app/widgets/custom_app_bar.dart';

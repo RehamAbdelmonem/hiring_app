@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hiring_app/screens/who_am_I/screens/who_am_i.dart';
 import 'package:hiring_app/widgets/custom_app_bar.dart';
 import 'package:hiring_app/widgets/custom_button.dart';
 import 'package:hiring_app/screens/register/widgets/gender_list.dart';
@@ -58,7 +59,12 @@ class CompleteDataScreen extends StatelessWidget {
                 height: 40,
               ),
               CustomButton(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return const WhoAmI();
+                  }));
+                },
                 buttonText: 'Submit',
               ),
               const SizedBox(
@@ -71,4 +77,3 @@ class CompleteDataScreen extends StatelessWidget {
     );
   }
 }
-
