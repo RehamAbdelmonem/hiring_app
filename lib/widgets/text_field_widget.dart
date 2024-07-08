@@ -7,13 +7,16 @@ class TextFieldWidget extends StatelessWidget {
       {super.key,
       required this.fieldText,
       this.fieldIcon,
-     this.maxLines,
-     this.textfieldHeight = 60});
+      this.maxLines,
+      this.textfieldHeight = 60,
+      required this.controller, this.onPressed});
 
   final String fieldText;
   final IconData? fieldIcon;
   final int? maxLines;
   final double textfieldHeight;
+  final TextEditingController controller;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -40,20 +43,31 @@ class TextFieldWidget extends StatelessWidget {
             ),
             width: 350,
             height: textfieldHeight,
-            child: TextField(
+            child: TextFormField(
+              controller: controller,
               keyboardType: TextInputType.emailAddress,
               style: const TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.only(left: 20),
                 suffixIcon: fieldIcon != null
-                    ? Icon(
-                        fieldIcon,
-                        color: AppColors.textColor,
-                        size: 18,
-                      )
+                    ? IconButton(
+                      onPressed: onPressed,
+                      icon: Icon(
+                          fieldIcon,
+                          color: AppColors.textColor,
+                          size: 18,
+                        ),
+                    )
                     : null,
               ),
+              validator: (value) {
+                if (value?.isEmpty ?? true) {
+                  return 'Field is required';
+                } else {
+                  return null;
+                }
+              },
             ),
           ),
         ),

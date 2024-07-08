@@ -1,9 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hiring_app/utils/app_colors.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ProfilePicture extends StatelessWidget {
+class ProfilePicture extends StatefulWidget {
   const ProfilePicture({super.key});
+
+  @override
+  State<ProfilePicture> createState() => _ProfilePictureState();
+}
+
+class _ProfilePictureState extends State<ProfilePicture> {
+  File? _selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +34,21 @@ class ProfilePicture extends StatelessWidget {
                     color: AppColors.primaryColor,
                   ),
                   shape: BoxShape.circle,
-                  image: const DecorationImage(
+                  image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage('assets/images/Clipped-1.png')),
+                      image: _selectedImage != null
+                          ? FileImage(_selectedImage!)
+                          : const AssetImage('assets/images/Clipped-1.png')
+                              as ImageProvider),
                 ),
               ),
               Positioned(
                 bottom: 0,
                 right: 0,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    _pickImageFromGallery();
+                  },
                   child: Container(
                     height: 40,
                     width: 40,
@@ -53,5 +68,15 @@ class ProfilePicture extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future _pickImageFromGallery() async {
+    final returnedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (returnedImage == null) return;
+    setState(() {
+      _selectedImage = File(returnedImage.path);
+    });
   }
 }

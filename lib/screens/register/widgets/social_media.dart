@@ -17,7 +17,7 @@ class SocialMedia extends StatelessWidget {
             style: Styles.textStyle16,
           ),
         ),
-        const SizedBox(
+         SizedBox(
           height: 5.0,
         ),
         CustomCheckbox(

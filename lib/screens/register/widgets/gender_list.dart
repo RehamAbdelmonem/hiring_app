@@ -1,16 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:hiring_app/screens/register/controllers/gender_controller.dart';
 import 'package:hiring_app/utils/app_colors.dart';
 import 'package:hiring_app/utils/styles.dart';
 
 class GenderList extends StatefulWidget {
-  const GenderList({super.key});
+  final GenderController controller;
+
+  const GenderList({super.key, required this.controller});
 
   @override
   State<GenderList> createState() => _GenderListState();
 }
 
 class _GenderListState extends State<GenderList> {
-  int _value = 1;
+  
+  @override
+  void initState() {
+    super.initState();
+    widget.controller.addListener(_updateState);
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_updateState);
+    super.dispose();
+  }
+
+  void _updateState() {
+    setState(() {});
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,11 +56,9 @@ class _GenderListState extends State<GenderList> {
                   Radio(
                     activeColor: AppColors.primaryColor,
                     value: 1,
-                    groupValue: _value,
+                    groupValue: widget.controller.value,
                     onChanged: (value) {
-                      setState(() {
-                        _value = value!;
-                      });
+                      widget.controller.setValue(value!);
                     },
                   ),
                   Text(
@@ -55,11 +73,9 @@ class _GenderListState extends State<GenderList> {
                   Radio(
                     activeColor: AppColors.primaryColor,
                     value: 2,
-                    groupValue: _value,
+                    groupValue: widget.controller.value,
                     onChanged: (value) {
-                      setState(() {
-                        _value = value!;
-                      });
+                      widget.controller.setValue(value!);
                     },
                   ),
                   Text(

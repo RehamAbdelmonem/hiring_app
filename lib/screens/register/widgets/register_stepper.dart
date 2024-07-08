@@ -54,8 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stepper(
-        elevation: 0, //Horizontal Impact
-        // margin: const EdgeInsets.all(20), //vertical impact
+        elevation: 0, 
         controlsBuilder: controlBuilders,
         type: StepperType.vertical,
         physics: const ScrollPhysics(),

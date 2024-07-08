@@ -12,10 +12,15 @@ class MyTableData extends DataTableSource {
 
   @override
   DataRow? getRow(int index) {
-    return DataRow(cells: [
+    return DataRow(
+      color: WidgetStateColor.resolveWith((states) {
+      return Colors.white;
+    }),
+      cells: [
       DataCell(Text(_data[index]['country'],style: Styles.textStyle14,)),
       DataCell(Text(_data[index]['capital'],style: Styles.textStyle14)),
-    ]);
+    ]
+    );
   }
 
   @override

@@ -10,7 +10,7 @@ class ServiceCard extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.only(top:20.0,left:20,bottom: 20),
         child: Container(
           width: 157,
           height: 192,
@@ -20,7 +20,6 @@ class ServiceCard extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
-                  spreadRadius: 5,
                   blurRadius: 7,
                   offset: const Offset(0, 2),
                 ),

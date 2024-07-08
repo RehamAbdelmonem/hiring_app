@@ -15,116 +15,129 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController emailAddress = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  final _loginFormKey = GlobalKey<FormState>();
+
   bool value = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomAppBar(
-              textAppBar: 'Account Login',
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 45,
-                left: 75,
+        child: Form(
+          key: _loginFormKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CustomAppBar(
+                textAppBar: 'Account Login',
               ),
-              child: SizedBox(
-                width: 250,
-                height: 250,
-                child: SvgPicture.asset(
-                  'assets/images/Login-cuate 1.svg',
-                  fit: BoxFit.cover,
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 45,
+                  left: 75,
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const TextFieldWidget(
-              fieldText: 'Email Address',
-            ),
-            const SizedBox(
-              height: 14,
-            ),
-            const TextFieldWidget(
-              fieldText: 'Password',
-              fieldIcon: Icons.visibility_off,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 16),
-                  child: Row(
-                    children: [
-                      Checkbox(
-                        activeColor: AppColors.primaryColor,
-                        value: value,
-                        onChanged: (bool? newValue) {
-                          setState(() {
-                            value = newValue ?? false;
-                          });
-                        },
-                      ),
-                      const Text(
-                        'Remember me',
-                        style: Styles.textStyle12,
-                      ),
-                    ],
+                child: SizedBox(
+                  width: 250,
+                  height: 250,
+                  child: SvgPicture.asset(
+                    'assets/images/Login-cuate 1.svg',
+                    fit: BoxFit.cover,
                   ),
                 ),
-                GestureDetector(
-                  child: Container(
-                    alignment: Alignment.centerRight,
-                    padding: const EdgeInsets.only(right: 20),
-                    child: const Text(
-                      'Forgot password?',
-                      style: Styles.textStyle12,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextFieldWidget(
+                controller: emailAddress,
+                fieldText: 'Email Address',
+              ),
+              const SizedBox(
+                height: 14,
+              ),
+              TextFieldWidget(
+                controller: password,
+                fieldText: 'Password',
+                fieldIcon: Icons.visibility_off,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: Row(
+                      children: [
+                        Checkbox(
+                          activeColor: AppColors.primaryColor,
+                          value: value,
+                          onChanged: (bool? newValue) {
+                            setState(() {
+                              value = newValue ?? false;
+                            });
+                          },
+                        ),
+                        const Text(
+                          'Remember me',
+                          style: Styles.textStyle12,
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 14,
-            ),
-            CustomButton(
-              onTap: () {},
-              buttonText: 'Login',
-            ),
-            const SizedBox(
-              height: 14,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "Don't have an account ? ",
-                  style: Styles.textStyle12,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return const RegisterScreen();
-                    }));
-                  },
-                  child: Text(
-                    'Register',
-                    style: Styles.textStyle12
-                        .copyWith(color: AppColors.primaryColor),
+                  GestureDetector(
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      padding: const EdgeInsets.only(right: 20),
+                      child: const Text(
+                        'Forgot password?',
+                        style: Styles.textStyle12,
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+              const SizedBox(
+                height: 14,
+              ),
+              CustomButton(
+                onTap: () {
+                  if (_loginFormKey.currentState!.validate()) {
+                    setState(() {});
+                  }
+                },
+                buttonText: 'Login',
+              ),
+              const SizedBox(
+                height: 14,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Don't have an account ? ",
+                    style: Styles.textStyle12,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return RegisterScreen();
+                      }));
+                    },
+                    child: Text(
+                      'Register',
+                      style: Styles.textStyle12
+                          .copyWith(color: AppColors.primaryColor),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

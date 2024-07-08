@@ -4,7 +4,6 @@ import 'package:hiring_app/utils/styles.dart';
 
 class ServiceScreen extends StatelessWidget {
   const ServiceScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -28,7 +27,7 @@ class ServiceScreen extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 55, left: 10),
+            padding: EdgeInsets.only(top: 40, left: 10),
             child: Text(
               'Popular Services',
               style: Styles.appBarStyle,

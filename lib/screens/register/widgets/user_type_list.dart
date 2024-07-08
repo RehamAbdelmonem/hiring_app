@@ -1,17 +1,35 @@
-
 import 'package:flutter/material.dart';
+import 'package:hiring_app/screens/register/controllers/user_type_controller.dart';
 import 'package:hiring_app/utils/app_colors.dart';
 import 'package:hiring_app/utils/styles.dart';
 
 class UserTypeList extends StatefulWidget {
-  const UserTypeList({super.key});
+  final UserTypeController controller;
+
+  const UserTypeList({super.key, required this.controller});
 
   @override
   State<UserTypeList> createState() => _UserTypeListState();
 }
 
 class _UserTypeListState extends State<UserTypeList> {
-  int _value = 1;
+  @override
+  void initState() {
+    super.initState();
+    widget.controller.addListener(_updateState);
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_updateState);
+    super.dispose();
+  }
+
+  void _updateState() {
+    setState(() {});
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,11 +55,9 @@ class _UserTypeListState extends State<UserTypeList> {
                   Radio(
                     activeColor: AppColors.primaryColor,
                     value: 1,
-                    groupValue: _value,
+                    groupValue: widget.controller.value,
                     onChanged: (value) {
-                      setState(() {
-                        _value = value!;
-                      });
+                      widget.controller.setValue(value!);
                     },
                   ),
                   Text(
@@ -56,11 +72,9 @@ class _UserTypeListState extends State<UserTypeList> {
                   Radio(
                     activeColor: AppColors.primaryColor,
                     value: 2,
-                    groupValue: _value,
+                   groupValue: widget.controller.value,
                     onChanged: (value) {
-                      setState(() {
-                        _value = value!;
-                      });
+                      widget.controller.setValue(value!);
                     },
                   ),
                   Text(
@@ -75,11 +89,9 @@ class _UserTypeListState extends State<UserTypeList> {
                   Radio(
                     activeColor: AppColors.primaryColor,
                     value: 3,
-                    groupValue: _value,
+                    groupValue: widget.controller.value,
                     onChanged: (value) {
-                      setState(() {
-                        _value = value!;
-                      });
+                      widget.controller.setValue(value!);
                     },
                   ),
                   Text(
@@ -97,3 +109,4 @@ class _UserTypeListState extends State<UserTypeList> {
     );
   }
 }
+
