@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hiring_app/helper/show_snack_bar.dart';
 import 'package:hiring_app/screens/register/screens/complete_data_screen.dart';
 import 'package:hiring_app/screens/register/screens/register_screen.dart';
 import 'package:hiring_app/screens/register/widgets/my_custom_stepper.dart';
@@ -18,17 +19,27 @@ class _MyHomeStepperState extends State<MyHomeStepper> {
   int currentStep = 1;
   int stepLength = 2;
   List<String> stepTexts = ['Register', 'Complete Data'];
+  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _completeFormKey = GlobalKey<FormState>();
 
-  next() {
-    if (currentStep < stepLength) {
+ next() {
+  if (currentStep == 1) {
+    if (_registerFormKey.currentState?.validate() ?? false) {
       goTo(currentStep + 1);
-    } else if (currentStep == stepLength) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const WhoAmI()),
-      );
+    } else {
+      showSnackBar(context, 'Fill the required fields');
     }
-  }
+  } else if (currentStep == stepLength) {
+    if (_completeFormKey.currentState?.validate() ?? false) {
+      Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const WhoAmI()),
+    );
+    } else {
+     showSnackBar(context, 'Fill the required fields');
+    }
+  } 
+}
 
   goTo(int step) {
     setState(() => currentStep = step);
@@ -44,6 +55,7 @@ class _MyHomeStepperState extends State<MyHomeStepper> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               const CustomAppBar(textAppBar: 'Register'),
+              const SizedBox(height: 20,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: List.generate(
@@ -63,9 +75,9 @@ class _MyHomeStepperState extends State<MyHomeStepper> {
                 height: 45,
               ),
               currentStep == 1
-                  ? RegisterScreen()
+                  ? RegisterScreen(formKey: _registerFormKey)
                   : currentStep == 2
-                      ? const CompleteDataScreen()
+                      ?  CompleteDataScreen(completeformKey: _completeFormKey,)
                       : const WhoAmI(),
             ],
           ),

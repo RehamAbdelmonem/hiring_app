@@ -9,17 +9,15 @@ void showSnackBar(BuildContext context, String message) {
       elevation: 0,
       backgroundColor: const Color(0xffFFF0ED),
       behavior: SnackBarBehavior.floating,
-      margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 660.0),
+      margin: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 585.0),
       content: Row(
         children: [
           const Icon(FontAwesomeIcons.circleExclamation, color: Colors.red,size: 15,),
           const SizedBox(width: 8), 
-          Expanded(
-            child: Text(
-              message,
-              style:Styles.textStyle12.copyWith(color: Colors.red),
-              overflow: TextOverflow.ellipsis,
-            ),
+          Text(
+            message,
+            style:Styles.textStyle12.copyWith(color: Colors.red),
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

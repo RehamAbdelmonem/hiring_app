@@ -34,7 +34,7 @@ class TextFieldWidget extends StatelessWidget {
           height: 5.0,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20),
+          padding: const EdgeInsets.only(left: 20,),
           child: Container(
             alignment: Alignment.centerLeft,
             decoration: BoxDecoration(
@@ -45,11 +45,11 @@ class TextFieldWidget extends StatelessWidget {
             height: textfieldHeight,
             child: TextFormField(
               controller: controller,
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.text,
               style: const TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 border: InputBorder.none,
-                contentPadding: const EdgeInsets.only(left: 20),
+                contentPadding: const EdgeInsets.only(left: 20,top: 20),
                 suffixIcon: fieldIcon != null
                     ? IconButton(
                       onPressed: onPressed,

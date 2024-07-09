@@ -9,7 +9,9 @@ import 'package:hiring_app/screens/register/widgets/social_media.dart';
 import 'package:hiring_app/widgets/text_field_widget.dart';
 
 class CompleteDataScreen extends StatefulWidget {
-  const CompleteDataScreen({super.key});
+    final GlobalKey<FormState> completeformKey;
+
+  const CompleteDataScreen({super.key, required this.completeformKey});
 
   @override
   State<CompleteDataScreen> createState() => _CompleteDataScreenState();
@@ -26,7 +28,7 @@ class _CompleteDataScreenState extends State<CompleteDataScreen> {
 
   final GenderController _genderController = GenderController();
 
-  final _completeFormKey = GlobalKey<FormState>();
+  // final _completeFormKey = GlobalKey<FormState>();
 
   Future<void> _selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
@@ -48,7 +50,7 @@ class _CompleteDataScreenState extends State<CompleteDataScreen> {
     return Padding(
       padding: const EdgeInsets.only(right: 20.0),
       child: Form(
-        key: _completeFormKey,
+        key: widget.completeformKey,
         child: Column(
           children: [
             const ProfilePicture(),

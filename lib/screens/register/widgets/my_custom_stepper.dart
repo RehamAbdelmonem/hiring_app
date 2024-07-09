@@ -27,7 +27,7 @@ class MyCustomStepper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(
-        top: 20.0,
+        top: 5.0,
         left: 70.0,
         right: 70.0,
       ),
