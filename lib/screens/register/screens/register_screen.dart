@@ -24,7 +24,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   final UserTypeController _userTypeController = UserTypeController();
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -72,25 +71,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
             UserTypeList(
               controller: _userTypeController,
             ),
-
-            //       // if (_registerFormKey.currentState!.validate()) {
-            //       //   showSnackBar(context, 'Fill the required fields');
-            //       // }
-            //       // else{
-            //       //   Navigator.of(context).push(MaterialPageRoute(builder: (context){
-            //       //     return CompleteDataScreen();
-            //       //   }));
-            //       //   setState(() {
-
-            //       //   });
-            //       // }
-
-            //     },
-            //     buttonText: 'Next',
-            //     buttonWidth: 160,
-            //     buttonHeight: 56,
-            //   ),
-            // )
           ],
         ),
       ),

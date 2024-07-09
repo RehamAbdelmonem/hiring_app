@@ -89,14 +89,14 @@ class _MyHomeStepperState extends State<MyHomeStepper> {
           Padding(
             padding: currentStep == stepLength
                 ? const EdgeInsets.only(bottom: 20)
-                : const EdgeInsets.only(left: 194, bottom: 20),
+                : const EdgeInsets.only(left: 175, bottom: 20,right: 10),
             child: GestureDetector(
               onTap: () {
                 next();
               },
               child: Container(
                 alignment: Alignment.center,
-                width: currentStep == stepLength ? 350 : 160,
+                width: currentStep == stepLength ? 325 : 160,
                 height: currentStep == stepLength ? 60 : 56,
                 decoration: BoxDecoration(
                     color: AppColors.primaryColor,

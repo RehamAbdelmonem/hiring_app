@@ -40,7 +40,7 @@ class _SkillsFieldState extends State<SkillsField> {
             width: 350,
             height: 100,
             child: Wrap(
-                spacing: 10,
+                spacing: 5,
                 children: List.generate(inputdata.length, (index) {
                   return InputChip(
                     label: Text(

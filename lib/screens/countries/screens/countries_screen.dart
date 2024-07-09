@@ -35,7 +35,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
                   DataColumn(label: Text('Capital',style: Styles.textStyle16,)),
                 ],
                 columnSpacing: 100,
-                horizontalMargin: 100,
+                horizontalMargin: 60,
                 rowsPerPage: 8,
                 dataRowHeight:35 ,
                 headingRowColor: WidgetStateColor.resolveWith((states) => const Color(0xfff9f9f9)),

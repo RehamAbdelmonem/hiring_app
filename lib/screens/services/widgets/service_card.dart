@@ -7,7 +7,7 @@ class ServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {},
       child: Padding(
         padding: const EdgeInsets.only(top:20.0,left:20,bottom: 20),

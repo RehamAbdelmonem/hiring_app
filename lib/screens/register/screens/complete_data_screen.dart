@@ -28,7 +28,6 @@ class _CompleteDataScreenState extends State<CompleteDataScreen> {
 
   final GenderController _genderController = GenderController();
 
-  // final _completeFormKey = GlobalKey<FormState>();
 
   Future<void> _selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
@@ -95,16 +94,6 @@ class _CompleteDataScreenState extends State<CompleteDataScreen> {
             const SizedBox(
               height: 40,
             ),
-
-              // if (_completeFormKey.currentState!.validate()) {
-              //   setState(() {});
-              // }
-
-              // buttonText: 'Submit',
-            // ),
-            // const SizedBox(
-            //   height: 60,
-            // ),
           ],
         ),
       ),

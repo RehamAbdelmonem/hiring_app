@@ -114,27 +114,30 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 14,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Don't have an account ? ",
-                    style: Styles.textStyle12,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return MyHomeStepper();
-                      }));
-                    },
-                    child: Text(
-                      'Register',
-                      style: Styles.textStyle12
-                          .copyWith(color: AppColors.primaryColor),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Don't have an account ? ",
+                      style: Styles.textStyle12,
                     ),
-                  ),
-                ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return MyHomeStepper();
+                        }));
+                      },
+                      child: Text(
+                        'Register',
+                        style: Styles.textStyle12
+                            .copyWith(color: AppColors.primaryColor),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
